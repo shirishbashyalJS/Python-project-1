@@ -1,0 +1,8 @@
+git pull origin main
+
+git add .
+
+git commit -m "Added All essentials need to do work"
+
+
+git push origin main

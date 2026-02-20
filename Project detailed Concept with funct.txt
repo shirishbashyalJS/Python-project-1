@@ -1,0 +1,60 @@
+Project detailed Concept with function: 
+
+Name of the project: AeroHunt
+
+1. Print on Screen:
+	Story:
+		 There is a guy in Finland and he found a map inside too old cave. In that map,there was information about treasure and the guy goes for a hunt:
+2. Ask for the user name by using input. Use the username as the guy in Finland
+
+3. We set the default location of the user as Finland.
+
+4. We create database connection function to connect to the database
+
+5. We loaded the data from our country database and stored in a variable named fetched_data
+
+6. We select random country data and stored on a variable named random_country_data which is our final destination as of the first part of the game.
+
+7. We notify the user about their current location, available money with the user, and cost for travel.
+
+7. We show users the available country they can travel and given hints about the destination country.
+
+8. Then, the user will select  some of the destination and we need to compare the user choosed or thought country to the actual destination.
+
+a. If the user directly goes to the right destination. Then the second phase of the game starts
+b. If the user goes to wrong destination. Then we update the user location. Also deduct money and update it according to our cost per kilometer.
+c. Also the user has entered the location  then we will update the user that he is in wrong destination. And In this we will not update the location of user location.
+
+9. We continue number 8 till the user have money available or the user reaches to destination.
+
+10. After He reaches to final destination, the second phase of the game will start.
+
+After he enters a cave in the destination country, There will be a key in the target where he needs to hit. After hitting the target, user will get the key to treasure. But the velocity needed to be thrown to hit the target is hidden in the map. In map there is the pattern which the user needs to predict which will be the initial velocity of the arrow.
+
+11. In the second phase, we will fetch some of the patterns data from database according to difficulty level.
+
+12. The user will be asked for upcoming number.
+
+a. If the user predicts the correct velocity. With some basic animation, the arrow will hit the target.
+b. If user does not predict it, he will be out of the game.
+
+13. After he gets the key, the user will start opening the treasure. Then he saw the treasure box was encrypted. For the decryption key hint, the map was of very bad condition and only "country" word was visible.
+
+14. To get the password, the user need to guess the country name in (country length - if difficulty) chances. Each time user predicts the right letter, the letter will start to fill on the blank (_) and the visible question will be example:  ( _ _ _ _ _ )    and the answer for it is NEPAL(let)
+
+a. On normal difficulty level, the user will get chance of 5+2 chance, if user types then: N _ _ _ _
+b. If user types the letter not in password, then the chance will be deducted.
+
+15. If total chance finish early without completing the game, the user will loose. Else repeat 14 until the user guess it.
+
+
+*************** If 3 of the levels will be completed, then the user will win, Else Loose ************************************************************
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+ 
+
+
+
+
+
+
