@@ -1,6 +1,11 @@
 import mariadb
 import random
 from geopy.distance import geodesic
+import os
+from dotenv import load_dotenv
+
+# This looks for a .env file in the current directory
+load_dotenv()
 
 # Default starting location (Finland)
 temp_location = {
@@ -15,11 +20,11 @@ temp_location = {
 def database_connection():
 
     config = {
-        "host": "127.0.0.1",
-        "port": 3306,
-        "user": "root",
-        "password": "12345",
-        "database": "world_data"
+        "host": os.getenv("DB_HOST"),
+        "port": int(os.getenv("DB_PORT", 3306)), # Cast to int; 3306 is the fallback
+        "user": os.getenv("DB_USER"),
+        "password": os.getenv("DB_PASSWORD"),
+        "database": os.getenv("DB_NAME")
     }
 
     try:
