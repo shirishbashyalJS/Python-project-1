@@ -1,12 +1,15 @@
 import mariadb
-import random
 import os
 from dotenv import load_dotenv
-from userName import *
+from src.userName import *
 
-load_dotenv()
+dotenv_path = os.path.join(os.path.dirname(__file__), '..', 'Assects', '.env')
 
-def database_connection():
+
+load_dotenv(dotenv_path)
+
+
+def database_connection_for_fetching(query):
  
     config = {
         "host": os.getenv("DB_HOST"),
@@ -19,11 +22,10 @@ def database_connection():
 
     try:
         conn = mariadb.connect(**config)
-        print("Server Loaded!\n")
+        print("Game Loaded!\n")
 
         cur = conn.cursor()
 
-        query = "SELECT * FROM Patterns WHERE difficulty_level = ?;"
         cur.execute(query, (game_level,))
 
         fetched_data = cur.fetchall()
@@ -33,16 +35,3 @@ def database_connection():
     except mariadb.Error as e:
         print(f"Error in MariaDB: {e}")
         return []
-
-fetched_pattern = database_connection()
-
-random_pattern_data = random.choice(fetched_pattern)
-print (random_pattern_data[1])
-user_choice = int(input("what is the next value : "  ))
-print (user_choice)
-if user_choice == random_pattern_data[2]:
-    print("You are right")
-else:
-    print("you are wrong")
-
-
