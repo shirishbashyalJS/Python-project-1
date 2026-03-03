@@ -3,9 +3,10 @@
 from src.countryFind import country_find
 from src.crossbow import crossbow
 from src.countrynamefind import countryNameGuess
+from functions.smoothPrinting import smooth_printing
 
 def start_game():
-    print("--- WELCOME TO THE ADVENTURE ---")
+    smooth_printing("--- WELCOME TO THE ADVENTURE ---")
 
     
     if country_find():

@@ -1,4 +1,10 @@
--- 1. Create the table with MariaDB compatible syntax
+
+CREATE DATABASE IF NOT EXISTS world_data;
+USE world_data;
+
+
+DROP TABLE IF EXISTS patterns;
+
 CREATE TABLE IF NOT EXISTS patterns (
     id INT NOT NULL AUTO_INCREMENT,
     sequence_text TEXT NOT NULL,
@@ -7,7 +13,6 @@ CREATE TABLE IF NOT EXISTS patterns (
     PRIMARY KEY (id)
 );
 
--- 2. Insert the data
 INSERT INTO patterns (sequence_text, hidden_velocity, difficulty_level) VALUES
 ('2, 4, 6, 8, 10', 12, 'Easy'),
 ('5, 10, 15, 20, 25', 30, 'Easy'),

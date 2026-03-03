@@ -7,7 +7,7 @@ def countryNameGuess():
     def getAttempts(length):
         if (game_level == "easy"):
             return length + 2
-        if (game_level == "mid"):
+        if (game_level == "medium"):
             return length 
         if (game_level == "hard"):
             return length - 2

@@ -1,11 +1,10 @@
--- Create database
+
 CREATE DATABASE IF NOT EXISTS world_data;
 USE world_data;
 
--- Drop table if exists
 DROP TABLE IF EXISTS countries;
 
--- Create table
+
 CREATE TABLE countries (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -15,7 +14,7 @@ CREATE TABLE countries (
     famous_for TEXT
 );
 
--- Insert 10 famous countries
+
 INSERT INTO countries (name, latitude, longitude, area_km2, famous_for) VALUES
 ('United States', 37.090240, -95.712891, 9833520, 'World’s largest economy, Hollywood, Silicon Valley, global superpower'),
 ('China', 35.861660, 104.195397, 9596961, 'Great Wall, largest population, manufacturing powerhouse'),
