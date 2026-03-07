@@ -1,9 +1,15 @@
 
 # main.py
+
 from src.countryFind import country_find
+
 from src.crossbow import crossbow
+
 from src.countrynamefind import countryNameGuess
+
+# For Text Animation
 from functions.smoothPrinting import smooth_printing,smooth_word_printing
+
 
 def start_game():
 
@@ -12,7 +18,8 @@ def start_game():
     if country_find():
         smooth_printing("\n--- You Find The Country Where Treasure Is Located! ---\n",delay=0.05)
         if crossbow():
-            smooth_printing("\n--- Level 2 Complete! Final Challenge... ---\n",delay=0.05)
+            smooth_printing("\n--- The Treasure Has been Dropped From The Roof... ---\n",delay=0.05)
+            smooth_printing("\n--- The Treasure Is Encrepted, There Is Something On The Map ---\n",delay=0.05)
             if countryNameGuess():
                 smooth_printing("\nCONGRATULATIONS! You have won the whole game! 🏆",delay=0.05)
             else:

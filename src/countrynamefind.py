@@ -41,7 +41,7 @@ def countryNameGuess():
     attempts = getAttempts(country_set_length)
 
 
-    smooth_word_printing("\t'_' is the placeholder for each country letter. Guess the country: ", delay=0.3)
+    smooth_word_printing("\t'_' is the placeholder for each country letter. Guess the country's Letters: ", delay=0.3)
 
     user_guessed_letters = []
 

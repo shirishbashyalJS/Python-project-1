@@ -1,6 +1,15 @@
 from functions.smoothPrinting import smooth_printing,smooth_word_printing
+from src.story import story, question
+
+
+smooth_printing(story,delay=0.03)
+smooth_printing(question,delay=0.1)
+
 print("\n\n")
+
+
 smooth_printing("\t -------------  WELCOME TO AEROHUNT  ---------------", delay=0.05)
+
 
 character_name = input("Enter Your Name To Start: ")
 

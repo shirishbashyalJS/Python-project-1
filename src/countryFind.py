@@ -50,7 +50,11 @@ def country_find():
 
 
     # Main Program
+    
+    # Maria DB Query has been stored in query variable as string
     query = "SELECT * FROM countries;"
+    
+    #Fetching data from database
     fetched_data = database_connection_for_fetching(query)
 
 
@@ -76,61 +80,51 @@ def country_find():
     random_country_data = random.choice(fetched_data)
 
     # Show hint
-    smooth_word_printing(f"\nHint for the country is: {random_country_data[5]}\n", delay=0.4)
+    smooth_word_printing(f"\nHint for the country in map is: {random_country_data[5]}\n", delay=0.4)
 
     # Game Loop
+    # Game Loop
     while True:
-
-        print(f"Current Location: {temp_location['name']}")
-        print(f"Money Left: {round(money,2)} €")
+        print(f"\nCurrent Location: {temp_location['name']}")
+        print(f"Money Left: {round(money, 2)} €")
 
         user_thought_country = input("Guess the country name: ").lower()
-
         new_loc = updating_location(user_thought_country, fetched_data)
-        
-        
-
 
         if new_loc is not None:
+            # 1. Capture OLD coordinates (where the player is right now)
+            current_coords = (temp_location["latitude"], temp_location["longitude"])
+            
+            # 2. Capture NEW coordinates (where the player wants to go)
+            destination_coords = (new_loc["latitude"], new_loc["longitude"])
 
-            temp_location = new_loc
-
-            user_coords = (
-                temp_location["latitude"],
-                temp_location["longitude"]
-            )
-
-            target_coords = (
-                float(random_country_data[2]),
-                float(random_country_data[3])
-            )
-
-            # calculate distance
-            distance = geodesic(user_coords, target_coords).km
+            # 3. Calculate distance from CURRENT to DESTINATION
+            distance = geodesic(current_coords, destination_coords).km
             distance = round(distance, 2)
 
-            print(f"You travelled {distance} km")
-
-            # calculate travel cost
+            # 4. Deduct money for this trip
             travel_cost = distance * cost_per_km
             money -= travel_cost
 
-            print(f"Travel Cost: {round(travel_cost,2)} €")
-            print(f"Money Remaining: {round(money,2)} €\n")
+            # 5. Update the current location to the new country
+            temp_location = new_loc
 
+            print(f"You travelled {distance} km to {temp_location['name']}")
+            print(f"Travel Cost: {round(travel_cost, 2)} €")
 
-
-            # check if money finished
+            # Check if money ran out after the flight
             if money <= 0:
-                smooth_printing("You ran out of money!", delay=0.05)
-                smooth_printing("Game Over!", delay=0.05)
+                smooth_printing("You ran out of money during the flight!", delay=0.05)
                 print(f"The correct country was: {random_country_data[1]}")
                 return False
-        if user_thought_country == random_country_data[1].lower():
-            smooth_printing("\nYou reached the correct country!", 0.05)
-            print(f"Money Left: {round(money,2)} €")
-            return True
 
+            # Check if this new location is the target
+            if user_thought_country == random_country_data[1].lower():
+                smooth_printing("\nCongratulations! You reached the correct country!", 0.05)
+                print(f"Final Money Left: {round(money, 2)} €")
+                return True
+            else:
+                print("Not the target country! Keep looking.")
 
         else:
-            print("Country not found in the database.\n")
+            print("Country not found in the database. Try again.\n")

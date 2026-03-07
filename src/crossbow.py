@@ -9,7 +9,7 @@ def crossbow():
 
     smooth_word_printing("  Hey, Treasure Is On The Roof Of The Temple! ", delay=0.1)
     smooth_word_printing("  You Have An Arrow To Throw To Drop It Down, You Have Only One Attempt! ", delay=0.1)
-    smooth_word_printing("  There Is A Pattern In The Map, ", delay=0.1)
+    smooth_word_printing("  Oh! 😮, There Is A Pattern In The Map, ", delay=0.1)
 
     random_pattern_data = random.choice(fetched_pattern)
     print ("Pattern :",random_pattern_data[1])
