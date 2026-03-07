@@ -3,24 +3,24 @@
 from src.countryFind import country_find
 from src.crossbow import crossbow
 from src.countrynamefind import countryNameGuess
-from functions.smoothPrinting import smooth_printing
+from functions.smoothPrinting import smooth_printing,smooth_word_printing
 
 def start_game():
-    smooth_printing("--- WELCOME TO THE ADVENTURE ---")
 
+    smooth_printing("--- Let's Go To Find The Treasure Located Country ---", delay=0.05)
     
     if country_find():
-        print("\n--- Level 1 Complete! Moving to Level 2 ---\n")
+        smooth_printing("\n--- You Find The Country Where Treasure Is Located! ---\n",delay=0.05)
         if crossbow():
-            print("\n--- Level 2 Complete! Final Challenge... ---\n")
+            smooth_printing("\n--- Level 2 Complete! Final Challenge... ---\n",delay=0.05)
             if countryNameGuess():
-                print("\nCONGRATULATIONS! You have won the whole game! 🏆")
+                smooth_printing("\nCONGRATULATIONS! You have won the whole game! 🏆",delay=0.05)
             else:
-                print("\nSo close! You failed at the final hurdle.")
+                smooth_printing("\nSo close! You failed at the final hurdle.",delay=0.05)
         else:
-            print("\nGame Over at the Crossbow challenge.")
+            smooth_printing("\nGame Over at the Crossbow challenge.",delay=0.05)
     else:
-        print("\nBetter luck next time. Thank you for participating!")
+        smooth_printing("\nBetter luck next time. Thank you for participating!",delay=0.05)
         
 
 

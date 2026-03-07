@@ -1,6 +1,7 @@
 import random
 from geopy.distance import geodesic
 from functions.databaseConnection import *
+from functions.smoothPrinting import smooth_printing,smooth_word_printing
 
 
 
@@ -57,22 +58,25 @@ def country_find():
 
     print(f"You are currently in: {temp_location['name']}\n")
 
-    # Show all available travelable countries
-    print("You can travel to the following countries:\n")
-    for country in fetched_data:
-        print("-", country[1])
+    # Player Money System
+    money = getMoney()
+    cost_per_km = 1
 
-    print("\n--------------------------------------")
+    smooth_printing(f"You have total {money} €", delay=0.1)
+
+    # Show all available travelable countries
+    smooth_printing("You can travel to the following countries:\n", 0.05)
+    print("\n\t\t\t-------------------------------------------------")
+    for country in fetched_data:
+        smooth_word_printing(f"-> {country[1]}", 0.1, escape=False)
+
+    print("\n\t\t\t-------------------------------------------------")
 
     # Pick random target country
     random_country_data = random.choice(fetched_data)
 
     # Show hint
-    print(f"\nHint for the country is: {random_country_data[5]}\n")
-
-    # Player Money System
-    money = getMoney()
-    cost_per_km = 1
+    smooth_word_printing(f"\nHint for the country is: {random_country_data[5]}\n", delay=0.4)
 
     # Game Loop
     while True:
@@ -84,11 +88,7 @@ def country_find():
 
         new_loc = updating_location(user_thought_country, fetched_data)
         
-        # If correct guess
-        if user_thought_country == random_country_data[1].lower():
-            print("\nYou reached the correct country!")
-            print(f"Money Left: {round(money,2)} €")
-            return True
+        
 
 
         if new_loc is not None:
@@ -118,12 +118,18 @@ def country_find():
             print(f"Travel Cost: {round(travel_cost,2)} €")
             print(f"Money Remaining: {round(money,2)} €\n")
 
+
+
             # check if money finished
             if money <= 0:
-                print("You ran out of money!")
-                print("Game Over!")
+                smooth_printing("You ran out of money!", delay=0.05)
+                smooth_printing("Game Over!", delay=0.05)
                 print(f"The correct country was: {random_country_data[1]}")
                 return False
+        if user_thought_country == random_country_data[1].lower():
+            smooth_printing("\nYou reached the correct country!", 0.05)
+            print(f"Money Left: {round(money,2)} €")
+            return True
 
 
         else:
