@@ -56,7 +56,7 @@ Libraries: geopy, python-dotenv, mariadb
 
 Folder Structure: 
 
-
+```text
 Python-project-1/
 ├── Assects/               
 │   ├── .env                     # Database credentials (locally created)
@@ -74,7 +74,7 @@ Python-project-1/
 ├── main.py                      # Main entry point to launch the game
 ├── .gitignore                   # Files to be excluded from version control
 └── README.md                    # Project documentation
-
+```
 
 🚀 Installation
 Clone the repository:
