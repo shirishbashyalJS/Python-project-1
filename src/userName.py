@@ -1,5 +1,17 @@
 from functions.smoothPrinting import smooth_printing,smooth_word_printing
 from src.story import story, question
+<<<<<<< HEAD
+=======
+
+
+smooth_printing(story,delay=0.03)
+smooth_printing(question,delay=0.1)
+
+print("\n\n")
+
+
+smooth_printing("\t -------------  WELCOME TO AEROHUNT  ---------------", delay=0.05)
+>>>>>>> a1474feab29cc438fe0d15a499dbd7f4874c02db
 
 # This section will ask for the username and level of the game
 

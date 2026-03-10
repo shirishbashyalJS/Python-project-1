@@ -83,6 +83,7 @@ def country_find():
     smooth_word_printing(f"\nHint for the country in map is: {random_country_data[5]}\n", delay=0.4)
 
     # Game Loop
+    # Game Loop
     while True:
         print(f"\nCurrent Location: {temp_location['name']}")
         print(f"Money Left: {round(money, 2)} €")
@@ -91,10 +92,17 @@ def country_find():
         new_loc = updating_location(user_thought_country, fetched_data)
 
         if new_loc is not None:
+<<<<<<< HEAD
             # 1. Capture OLD coordinates, where the player is right now
             current_coords = (temp_location["latitude"], temp_location["longitude"])
             
             # 2. Capture NEW coordinates, where the player wants to go
+=======
+            # 1. Capture OLD coordinates (where the player is right now)
+            current_coords = (temp_location["latitude"], temp_location["longitude"])
+            
+            # 2. Capture NEW coordinates (where the player wants to go)
+>>>>>>> a1474feab29cc438fe0d15a499dbd7f4874c02db
             destination_coords = (new_loc["latitude"], new_loc["longitude"])
 
             # 3. Calculate distance from CURRENT to DESTINATION
