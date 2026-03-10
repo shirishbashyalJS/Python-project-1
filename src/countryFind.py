@@ -1,6 +1,7 @@
 import random
 from geopy.distance import geodesic
 from functions.databaseConnection import *
+from functions.smoothPrinting import smooth_printing,smooth_word_printing
 
 
 
@@ -49,7 +50,11 @@ def country_find():
 
 
     # Main Program
+    
+    # Maria DB Query has been stored in query variable as string
     query = "SELECT * FROM countries;"
+    
+    #Fetching data from database
     fetched_data = database_connection_for_fetching(query)
 
 
@@ -57,74 +62,68 @@ def country_find():
 
     print(f"You are currently in: {temp_location['name']}\n")
 
-    # Show all available travelable countries
-    print("You can travel to the following countries:\n")
-    for country in fetched_data:
-        print("-", country[1])
+    # Player Money System
+    money = getMoney()
+    cost_per_km = 1
 
-    print("\n--------------------------------------")
+    smooth_printing(f"You have total {money} €", delay=0.1)
+
+    # Show all available travelable countries
+    smooth_printing("You can travel to the following countries:\n", 0.05)
+    print("\n\t\t\t-------------------------------------------------")
+    for country in fetched_data:
+        smooth_word_printing(f"-> {country[1]}", 0.1, escape=False)
+
+    print("\n\t\t\t-------------------------------------------------")
 
     # Pick random target country
     random_country_data = random.choice(fetched_data)
 
     # Show hint
-    print(f"\nHint for the country is: {random_country_data[5]}\n")
-
-    # Player Money System
-    money = getMoney()
-    cost_per_km = 1
+    smooth_word_printing(f"\nHint for the country in map is: {random_country_data[5]}\n", delay=0.4)
 
     # Game Loop
     while True:
-
-        print(f"Current Location: {temp_location['name']}")
-        print(f"Money Left: {round(money,2)} €")
+        print(f"\nCurrent Location: {temp_location['name']}")
+        print(f"Money Left: {round(money, 2)} €")
 
         user_thought_country = input("Guess the country name: ").lower()
-
         new_loc = updating_location(user_thought_country, fetched_data)
-        
-        # If correct guess
-        if user_thought_country == random_country_data[1].lower():
-            print("\nYou reached the correct country!")
-            print(f"Money Left: {round(money,2)} €")
-            return True
-
 
         if new_loc is not None:
+            # 1. Capture OLD coordinates, where the player is right now
+            current_coords = (temp_location["latitude"], temp_location["longitude"])
+            
+            # 2. Capture NEW coordinates, where the player wants to go
+            destination_coords = (new_loc["latitude"], new_loc["longitude"])
 
-            temp_location = new_loc
-
-            user_coords = (
-                temp_location["latitude"],
-                temp_location["longitude"]
-            )
-
-            target_coords = (
-                float(random_country_data[2]),
-                float(random_country_data[3])
-            )
-
-            # calculate distance
-            distance = geodesic(user_coords, target_coords).km
+            # 3. Calculate distance from CURRENT to DESTINATION
+            distance = geodesic(current_coords, destination_coords).km
             distance = round(distance, 2)
 
-            print(f"You travelled {distance} km")
-
-            # calculate travel cost
+            # 4. Deduct money for this trip
             travel_cost = distance * cost_per_km
             money -= travel_cost
 
-            print(f"Travel Cost: {round(travel_cost,2)} €")
-            print(f"Money Remaining: {round(money,2)} €\n")
+            # 5. Update the current location to the new country
+            temp_location = new_loc
 
-            # check if money finished
+            print(f"You travelled {distance} km to {temp_location['name']}")
+            print(f"Travel Cost: {round(travel_cost, 2)} €")
+
+            # Check if money ran out after the flight
             if money <= 0:
-                print("You ran out of money!")
-                print("Game Over!")
+                smooth_printing("You ran out of money during the flight!", delay=0.05)
                 print(f"The correct country was: {random_country_data[1]}")
                 return False
 
+            # Check if this new location is the target
+            if user_thought_country == random_country_data[1].lower():
+                smooth_printing("\nCongratulations! You reached the correct country!", 0.05)
+                print(f"Final Money Left: {round(money, 2)} €")
+                return True
+            else:
+                print("Not the target country! Keep looking.")
 
         else:
-            print("Country not found in the database.\n")
+            print("Country not found in the database. Try again.\n")

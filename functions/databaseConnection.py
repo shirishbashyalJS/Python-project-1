@@ -5,8 +5,11 @@ import os
 from dotenv import load_dotenv
 from src.userName import *
 
+# Get the path of the dotenv file
 dotenv_path = os.path.join(os.path.dirname(__file__), '..', 'Assects', '.env')
-country_src_file_path = os.path.join(os.path.dirname(__file__), '..', 'Assects', 'demo_countries.sql')
+
+# Get the path of the demo_countries.sql
+country_src_file_path = os.path.join(os.path.dirname(__file__), '..', 'Assects', 'countries.sql')
 patterns_src_file_path = os.path.join(os.path.dirname(__file__), '..', 'Assects', 'Patterns.sql')
 
 load_dotenv(dotenv_path)
@@ -42,6 +45,10 @@ def database_connection_for_fetching(query, retry=False):
         else:
             print(f"Error in MariaDB: {e}")
             return []
+
+
+
+# For setting up first time database in users computer without mannual installation
 
 def setup_initial_database():
     """Connects to MariaDB without a database to run the creation scripts."""
