@@ -1,31 +1,36 @@
-🗺️ AeroHunt: The Map of Echoes
+# 🗺️ AeroHunt: The Map of Echoes
 AeroHunt is an immersive, text-based terminal adventure that challenges players to navigate the globe, solve physics-based projectile puzzles, and crack cryptographic codes to secure an ancient treasure.
 
 
 
-📜 The Story
+## 📜 The Story
 
 The Backstory 📄
 
 In the frigid, desolate wilderness of Finland, a solitary traveler named Elias sought shelter from a blizzard within the mouth of an ancient, forgotten cave. While scraping away frost from the limestone walls, he unearthed a hollowed-out stone containing a tattered, oil-stained map. It wasn't just a map; it was a riddle—a cryptic guide to a lost hoard of antiquities hidden by a nomadic civilization that vanished centuries ago. With the map whispering promises of fortune and glory, Elias decided to trade his quiet life for the thrill of the chase.
 
 
-The Ultimate Aim 🎯
+## The Ultimate Aim 🎯
 To navigate across the globe, survive the physical trials of the hunt, and ultimately decipher the final mechanism guarding the treasure to claim the lost artifacts.
 
 
-The Setting and Environment
+## The Setting and Environment
 The journey begins in the stark, frozen landscapes of Finland. From there, the player must traverse various international borders, moving through diverse environments—from bustling, sun-drenched markets to dense, humid jungles—guided only by the elusive hints scribbled on the parchment. The final destination is a legendary, weathered temple tucked away in a remote corner of the world, where the treasure sits high upon a precarious rooftop.
 
-The Characters 🦹‍♂️
+## The Characters 🦹‍♂️
 Elias (The Player): A curious explorer whose bravery is tested by his limited resources and the unforgiving clock of his journey.
 
 The Ancient Nomads (Background): The mysterious creators of the treasure, whose cryptic legacy still dictates the challenges of the hunt.
 
-🎮 Game Phases
+
+
+## 🎮 Game Phases
 The quest is divided into three challenging levels:
 
-Phase I: The Navigator
+
+
+
+### Phase I: The Navigator
 
 Travel across the globe to find the hidden destination country.
 
@@ -33,7 +38,9 @@ Manage your budget and fuel while calculating distances.
 
 Follow clues and hints to avoid getting lost.
 
-Phase II: The Archer
+
+
+### Phase II: The Archer
 
 Locate the treasure key within the destination.
 
@@ -41,20 +48,27 @@ Predict the initial velocity of the arrow using patterns hidden in the map.
 
 Test your physics intuition to hit the target.
 
-Phase III: The Cryptographer
+
+
+### Phase III: The Cryptographer
 
 Decrypt the encrypted treasure box.
 
 Guess the country name before your chances run out.
 
-🛠️ Tech Stack
-Language: Python 3.x
 
-Database: MariaDB/MySQL
 
-Libraries: geopy, python-dotenv, mariadb
 
-Folder Structure: 
+### 🛠️ Tech Stack
+#### Language: Python 3.x
+
+#### Database: MariaDB/MySQL
+
+#### Libraries: geopy, python-dotenv, mariadb
+
+
+
+### Folder Structure: 
 
 ```text
 Python-project-1/
@@ -76,25 +90,32 @@ Python-project-1/
 └── README.md                    # Project documentation
 ```
 
-🚀 Installation
-Clone the repository:
+
+
+
+# 🚀 Installation
+
+### Clone the repository, Inside of Terminal:
 
 ```bash
 git clone https://github.com/shirishbashyalJS/Python-project-1.git
 cd Python-project-1
-Install dependencies:
 ```
+
+
+### Install dependencies:
 
 ```bash
 pip install geopy python-dotenv mariadb
 ```
 
-⚙️ Environment Setup
+
+### ⚙️ Environment Setup
 To run this game locally, you need to configure your database credentials.
 
-Create a file named .env inside the assets/ folder.
+#### 1. Create a file named .env inside the assets/ folder.
 
-Copy the following template into your .env file and update it with your local MariaDB credentials:
+#### 2. Copy the following template into your .env file and update it with your local MariaDB credentials:
 
 ```text
 DB_HOST=127.0.0.1
@@ -104,30 +125,31 @@ DB_PASSWORD=your_password
 DB_NAME=world_data
 ```
 
-Security Warning: Never commit your .env file to GitHub. It is ignored by Git automatically in this project.
 
-Run The Game:
-Navigate to Python-project-1, and In terminal, Write 
+# Run The Game:
+### Navigate to Python-project-1, and In terminal, Write If not in Python-project-1
 
 ```bash
 cd Python-project-1
 ```
-Run the Main File:
+
+### Run the Main File:
 
 ```bash
+cls
 python main.py
 ```
 
 
-👥 Team
+# 👥 Team
 
-1. Karan
-2. Chhabilal Bashyal
-3. Nishan Khatiwada
-4. Monika Tiwari
+#### 1. Karan
+#### 2. Chhabilal Bashyal
+#### 3. Nishan Khatiwada
+#### 4. Monika Tiwari
 
 
-📜 MIT License
+# 📜 MIT License
 
 Copyright (c) 2026 Group 6,
 
